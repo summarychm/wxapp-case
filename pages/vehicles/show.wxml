@@ -1,0 +1,85 @@
+<!--pages/vehicles/show.wxml-->
+<view class='section'>
+
+ 
+  <!-- 头部简介 -->
+  <view class='cover'>
+    <image src="{{entity.image}}" mode="aspectFill" />
+    <view class="content">
+      <view class='header'>
+        {{entity.header}}
+        <view class='sub-header'>
+          {{entity.sub_header}}
+        </view>
+      </view>
+      <view class='meta'>{{entity.meta.price}}</view>
+    </view>
+  </view>
+
+  <!-- 详细参数 -->
+  <view class="spec">
+    <view class='item'>
+      <view class='header'>
+        <text>二氧化碳排放</text>
+      </view>
+      <view class='value'>
+        <text>{{entity.meta.carbon_dioxide}}</text>克/公里
+      </view>
+    </view>
+    <view class='item'>
+      <view class='header'>
+        <text>综合燃油</text>
+      </view>
+      <view class='value'>
+        <text>{{entity.meta.fuel}}</text>升/百公里
+      </view>
+    </view>
+  </view>
+
+  <!-- 简介 -->
+  <view class='action'>
+    <view class='description'>{{entity.description}}</view>
+    <button class='button primary' bindtap='testDrive' >预约试驾</button>
+  </view>
+
+ <!-- 外观与内饰 -->
+  <swiper class='section story white' indicator-indicator-dots='{{true}}'>
+    <block wx:for="{{entity.meta.exterior_design}}" wx:key="id">
+      <swiper-item>
+        <view class='content'>
+          <view class='sub-header'>外观</view>
+          <view class="header">{{item.header}}</view>
+          <view class='description'>{{item.description}}</view>
+        </view>
+        <image 
+          bindtap='preview' 
+          data-slides="exterior_design" 
+          data-index="{{index}}"
+          src='{{item.image}}' 
+          mode="aspectFill" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <swiper class='section story' indicator-indicator-dots='{{true}}'>
+    <block wx:for="{{entity.meta.interior_design}}" wx:key="id">
+      <swiper-item>
+        <view class='content'>
+          <view class='sub-header'>内饰</view>
+          <view class="header">{{item.header}}</view>
+          <view class='description'>{{item.description}}</view>
+        </view>
+        <image 
+          bindtap='preview' 
+          data-slides="interior_design" 
+          data-index="{{index}}"
+          src='{{item.image}}' 
+          mode="aspectFill"
+         />
+      </swiper-item>
+    </block>
+  </swiper>
+
+
+
+</view>

@@ -1,0 +1,14 @@
+image {
+  display: block;
+  width: 100%;
+}
+
+video {
+  width: 100%;
+}
+
+page {
+  /*统一字间距与字体大小*/
+  line-height: 1.5;
+  font-size: 32rpx;
+}
